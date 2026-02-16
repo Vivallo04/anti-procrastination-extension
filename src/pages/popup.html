@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard</title>
+  <link rel="stylesheet" href="../styles/popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <span class="icon">🔒</span>
+      <h2>FocusGuard</h2>
+    </div>
+
+    <div class="status">Always Active</div>
+
+    <div class="stats">
+      <div class="stat-row">
+        <span class="stat-label">Blocks Today:</span>
+        <span id="blocks-today" class="stat-value">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Overrides:</span>
+        <span id="overrides-today" class="stat-value">0</span><span class="stat-max">/3</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="manage-sites" class="btn">Manage Block List</button>
+      <button id="view-activity" class="btn">View Activity</button>
+    </div>
+
+    <div class="footer">
+      <p>Friction-based commitment device</p>
+    </div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

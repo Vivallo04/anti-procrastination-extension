@@ -1,0 +1,24 @@
+{
+  "name": "focusguard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Friction-based commitment device - always-on distraction blocker for Chrome",
+  "scripts": {
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "validate": "node scripts/validate-extension.js",
+    "ci": "npm run validate && npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "keywords": [
+    "chrome-extension",
+    "productivity",
+    "focus",
+    "distraction-blocker"
+  ],
+  "author": "FocusGuard Contributors",
+  "license": "MIT"
+}

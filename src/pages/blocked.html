@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard - Site Blocked</title>
+  <link rel="stylesheet" href="../styles/blocked.css">
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🔒</div>
+    <h1>FocusGuard Active</h1>
+    <p class="message">This site is blocked to protect your focus.</p>
+    <p class="domain">Attempted: <span id="blocked-domain"></span></p>
+
+    <button id="request-access" class="btn-primary">Request Access</button>
+
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">Blocked today:</span>
+        <span id="blocks-today" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Overrides used:</span>
+        <span id="overrides-today" class="stat-value">0</span><span class="stat-max">/3</span>
+      </div>
+    </div>
+
+    <p class="tagline">Every click is a choice.</p>
+  </div>
+
+  <!-- Override Modal - Week 2 implementation -->
+  <div id="override-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Request Access</h2>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step 1: Friction Challenge -->
+        <div id="step-challenge" class="step">
+          <p class="step-instruction">To continue, complete this challenge:</p>
+
+          <!-- Typing Challenge -->
+          <div id="typing-challenge" class="challenge hidden">
+            <p class="challenge-instruction">Type the following text exactly:</p>
+            <div id="typing-target" class="typing-target"></div>
+            <textarea id="typing-input" class="typing-input" placeholder="Type here..."></textarea>
+            <p id="typing-error" class="error-message hidden"></p>
+          </div>
+
+          <!-- Math Challenge -->
+          <div id="math-challenge" class="challenge hidden">
+            <p class="challenge-instruction">Solve this sequence:</p>
+            <div id="math-sequence" class="math-sequence"></div>
+            <input type="number" id="math-input" class="math-input" placeholder="Final answer">
+            <p id="math-error" class="error-message hidden"></p>
+          </div>
+
+          <!-- Spacebar Hold Challenge -->
+          <div id="hold-challenge" class="challenge hidden">
+            <p class="challenge-instruction">Hold the spacebar for 25 seconds:</p>
+            <div class="hold-progress-container">
+              <div id="hold-progress" class="hold-progress"></div>
+            </div>
+            <p id="hold-timer" class="hold-timer">0s / 25s</p>
+            <p id="hold-error" class="error-message hidden"></p>
+          </div>
+
+          <button id="challenge-submit" class="btn-primary">Continue</button>
+        </div>
+
+        <!-- Step 2: Intent Prompt -->
+        <div id="step-intent" class="step hidden">
+          <p class="step-instruction">Why do you want to access this site right now?</p>
+          <textarea id="intent-input" class="intent-input" placeholder="Minimum 15 characters..." rows="4"></textarea>
+          <p id="intent-error" class="error-message hidden">Please provide at least 15 characters.</p>
+          <button id="intent-submit" class="btn-primary">Continue</button>
+        </div>
+
+        <!-- Step 3: Final Confirmation -->
+        <div id="step-confirm" class="step hidden">
+          <p class="step-instruction">Type the following to confirm:</p>
+          <div class="confirm-text">I choose to continue</div>
+          <input type="text" id="confirm-input" class="confirm-input" placeholder="Type here...">
+          <p id="confirm-error" class="error-message hidden">Text must match exactly.</p>
+          <button id="confirm-submit" class="btn-primary">Grant Access</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="blocked.js"></script>
+</body>
+</html>

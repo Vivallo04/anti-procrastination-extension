@@ -1,0 +1,354 @@
+/* FocusGuard - Blocked Page Styles
+ * Design: Grayscale, minimal, no bright colors
+ * Philosophy: Intentional, not punitive
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  text-align: center;
+  background: white;
+  padding: 60px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.message {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.domain {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+#blocked-domain {
+  font-weight: 600;
+  color: #555;
+  font-family: 'Courier New', monospace;
+}
+
+.btn-primary {
+  background: #555;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 10px 0;
+}
+
+.btn-primary:hover {
+  background: #444;
+}
+
+.btn-primary:active {
+  background: #333;
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.25);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.stats {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-max {
+  font-size: 18px;
+  color: #999;
+}
+
+.tagline {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+.step {
+  display: block;
+}
+
+.step.hidden {
+  display: none;
+}
+
+.step-instruction {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Challenge Styles */
+.challenge {
+  margin: 20px 0;
+}
+
+.challenge.hidden {
+  display: none;
+}
+
+.challenge-instruction {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Typing Challenge */
+.typing-target {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.typing-input {
+  width: 100%;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.8;
+}
+
+.typing-input:focus {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  border-color: #888;
+}
+
+/* Math Challenge */
+.math-sequence {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  font-family: 'Courier New', monospace;
+}
+
+.math-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+}
+
+.math-input:focus {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  border-color: #888;
+}
+
+/* Hold Challenge */
+.hold-progress-container {
+  width: 100%;
+  height: 40px;
+  background: #f0f0f0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  border: 2px solid #e0e0e0;
+}
+
+.hold-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #666, #444);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.hold-timer {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+/* Intent Input */
+.intent-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.intent-input:focus {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  border-color: #888;
+}
+
+/* Confirmation */
+.confirm-text {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.confirm-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+.confirm-input:focus {
+  outline: 3px solid #1a73e8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  border-color: #888;
+}
+
+/* Error Messages */
+.error-message {
+  color: #c44;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.error-message.hidden {
+  display: none;
+}

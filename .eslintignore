@@ -1,0 +1,8 @@
+# Ignore non-source files
+icons/
+*.md
+LICENSE
+INSTALL.md
+scripts/
+.github/
+node_modules/
